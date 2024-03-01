@@ -1,12 +1,23 @@
-@Api_HostAddress = http://localhost:5110
+###
+
+@HostUrl = http://localhost:5110
+@DummyId = 6d492016-8364-430c-8cd2-979a00990f0b
 
 ###
 
-GET {{Api_HostAddress}}/api/v2/dummies
+# @name get-dummies
+GET {{HostUrl}}/api/v2/dummies
 Accept: application/json
 
 ###
 
+# @name get-dummy-by-id
+GET {{HostUrl}}/api/v2/dummies/{{DummyId}}
+Accept: application/json
+
+###
+
+# @name create-dummy
 POST http://localhost:5110/api/v2/dummies
 Accept: */*
 Content-Type: application/json
@@ -17,7 +28,8 @@ Content-Type: application/json
 
 ###
 
-GET {{Api_HostAddress}}/api/v2/dummies/search?keyword=foobar
+# @name search-dummies
+GET {{HostUrl}}/api/v2/dummies/search?keyword=foobar
 Accept: application/json
 
 ###

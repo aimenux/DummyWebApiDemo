@@ -2,6 +2,8 @@
 using Api.Extensions;
 using Asp.Versioning;
 using Microsoft.AspNetCore.HttpLogging;
+using Serilog;
+using Serilog.Debugging;
 
 namespace Api;
 
@@ -19,6 +21,7 @@ public static class DependencyInjection
         services.AddHttpLogging();
         services.AddVersioning();
         builder.AddSwaggerDoc();
+        builder.AddSerilog();
         return services;
     }
     
@@ -51,6 +54,20 @@ public static class DependencyInjection
         {
             logging.LoggingFields = HttpLoggingFields.All;
             logging.CombineLogs = true;
+        });
+    }
+    
+    private static void AddSerilog(this WebApplicationBuilder builder)
+    {
+        builder.Logging.ClearProviders();
+        
+        builder.Host.UseSerilog((hostingContext, loggerConfiguration) =>
+        {
+            SelfLog.Enable(Console.Error);
+
+            loggerConfiguration
+                .ReadFrom.Configuration(hostingContext.Configuration)
+                .Enrich.FromLogContext();
         });
     }
 }
