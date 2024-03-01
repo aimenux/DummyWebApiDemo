@@ -1,3 +1,5 @@
+[![.NET](https://github.com/aimenux/DummyWebApiDemo/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/aimenux/DummyWebApiDemo/actions/workflows/ci.yml)
+
 # DummyWebApiDemo
 ```
 Using a web api to play with dummies
