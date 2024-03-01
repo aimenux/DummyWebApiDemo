@@ -21,6 +21,15 @@ public class DummyRepository : IDummyRepository
         return dummies;
     }
 
+    public async Task<ICollection<Dummy>> SearchDummiesAsync(string keyword, CancellationToken cancellationToken)
+    {
+        var dummies = await _context.Set<Dummy>().ToListAsync(cancellationToken);
+        var foundDummies = dummies
+            .Where(x => x.Name.Value.Contains(keyword))
+            .ToList();
+        return foundDummies;
+    }
+
     public async Task<Dummy?> GetDummyByIdAsync(DummyId id, CancellationToken cancellationToken)
     {
         var dummy = await _context.Set<Dummy>().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);

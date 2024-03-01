@@ -10,8 +10,8 @@ public sealed class GetDummiesProfile : Profile
     {
         CreateMap<GetDummiesRequest, GetDummiesQuery>();
         CreateMap<GetDummiesQueryResponse, GetDummiesResponse>();
-        CreateMap<Dummy, DummyDto>()
-            .ForCtorParam(nameof(DummyDto.Id), opt => opt.MapFrom(src => src.Id.Value))
-            .ForCtorParam(nameof(DummyDto.Name), opt => opt.MapFrom(src => src.Name.Value));
+        CreateMap<Dummy, GetDummyDto>()
+            .ForCtorParam(nameof(GetDummyDto.Id), opt => opt.MapFrom(src => src.Id.Value))
+            .ForCtorParam(nameof(GetDummyDto.Name), opt => opt.MapFrom(src => src.Name.Value));
     }
 }

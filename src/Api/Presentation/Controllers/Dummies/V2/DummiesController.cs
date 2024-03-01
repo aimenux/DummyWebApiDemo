@@ -1,6 +1,8 @@
 ﻿using Api.Constants;
 using Api.Presentation.Controllers.Dummies.V2.GetDummies;
+using Api.Presentation.Controllers.Dummies.V2.SearchDummies;
 using Application.UseCases.Queries.GetDummies;
+using Application.UseCases.Queries.SearchDummies;
 using Asp.Versioning;
 using AutoMapper;
 using MediatR;
@@ -31,6 +33,16 @@ public class DummiesController : BaseController
         var query = _mapper.Map<GetDummiesQuery>(request);
         var queryResponse = await _sender.Send(query, cancellationToken);
         var apiResponse = _mapper.Map<GetDummiesResponse>(queryResponse);
+        return Ok(apiResponse);
+    }
+    
+    [HttpGet("search")]
+    [SwaggerOperation(nameof(SearchDummies))]
+    public async Task<IActionResult> SearchDummies([FromQuery] SearchDummiesRequest searchDummiesRequest, CancellationToken cancellationToken)
+    {
+        var query = _mapper.Map<SearchDummiesQuery>(searchDummiesRequest);
+        var queryResponse = await _sender.Send(query, cancellationToken);
+        var apiResponse = _mapper.Map<SearchDummiesResponse>(queryResponse);
         return Ok(apiResponse);
     }
 }

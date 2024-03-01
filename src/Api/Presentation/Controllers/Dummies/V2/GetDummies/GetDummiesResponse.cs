@@ -1,5 +1,5 @@
 ﻿namespace Api.Presentation.Controllers.Dummies.V2.GetDummies;
 
-public sealed record GetDummiesResponse(ICollection<DummyDto> Dummies);
+public sealed record GetDummiesResponse(ICollection<GetDummyDto> Dummies);
 
-public sealed record DummyDto(string Id, string Name);
+public sealed record GetDummyDto(string Id, string Name);

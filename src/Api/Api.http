@@ -2,5 +2,22 @@
 
 ###
 
-GET {{Api_HostAddress}}/api/v2/Dummies/
+GET {{Api_HostAddress}}/api/v2/dummies
 Accept: application/json
+
+###
+
+POST http://localhost:5110/api/v2/dummies
+Accept: */*
+Content-Type: application/json
+
+{
+  "name": "foobar"
+}
+
+###
+
+GET {{Api_HostAddress}}/api/v2/dummies/search?keyword=foobar
+Accept: application/json
+
+###
