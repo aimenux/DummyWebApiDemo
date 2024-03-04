@@ -7,7 +7,6 @@ public class GetDummyQueryValidator : AbstractValidator<GetDummyQuery>
     public GetDummyQueryValidator()
     {
         RuleFor(x => x.Id)
-            .NotEmpty()
-            .Must(x => Guid.TryParse(x, out var _));
+            .NotEmpty();
     }
 }

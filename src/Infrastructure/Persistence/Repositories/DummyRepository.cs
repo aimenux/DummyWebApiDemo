@@ -38,7 +38,7 @@ public class DummyRepository : IDummyRepository
 
     public async Task<Dummy> AddDummyAsync(DummyName name, CancellationToken cancellationToken)
     {
-        var id = new DummyId(Guid.NewGuid());
+        var id = new DummyId($"{Guid.NewGuid():N}");
         var dummy = Dummy.CreateDummy(id, name);
         await _context.Set<Dummy>().AddAsync(dummy, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);

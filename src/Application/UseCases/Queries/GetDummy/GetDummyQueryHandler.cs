@@ -16,7 +16,7 @@ public class GetDummyQueryHandler : IRequestHandler<GetDummyQuery, GetDummyQuery
 
     public async Task<GetDummyQueryResponse> Handle(GetDummyQuery query, CancellationToken cancellationToken)
     {
-        var dummyId = new DummyId(Guid.Parse(query.Id));
+        var dummyId = new DummyId(query.Id);
         var dummy = await _dummyRepository.GetDummyByIdAsync(dummyId, cancellationToken);
         if (dummy is null)
         {

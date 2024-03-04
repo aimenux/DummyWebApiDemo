@@ -25,5 +25,5 @@ public sealed class DummyConfiguration : IEntityTypeConfiguration<Dummy>
             });
     }
     
-    private static Dummy CreateDummy(Guid id) => Dummy.CreateDummy(id, $"{id:N}");
+    private static Dummy CreateDummy(Guid id) => Dummy.CreateDummy($"id-{id:N}", $"name-{id:N}");
 }
