@@ -30,10 +30,12 @@ public static class SwaggerExtensions
         app.UseSwaggerUI(options =>
         {
             options.DisplayRequestDuration();
-            var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
-            foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions)
+            var descriptions = app.DescribeApiVersions();
+            foreach (var description in descriptions)
             {
-                options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpper());
+                var url = $"/swagger/{description.GroupName}/swagger.json";
+                var name = description.GroupName;
+                options.SwaggerEndpoint(url, name);
             }
         });
     }

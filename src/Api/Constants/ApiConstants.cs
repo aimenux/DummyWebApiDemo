@@ -5,6 +5,8 @@ public class ApiConstants
     public const string ApplicationName = "DummyWebApiDemo";
 
     public const string VersionHeaderName = "X-Api-Version";
+    
+    public const string GroupNameFormat = "'v'VVV";
 
     public static class Versions
     {
