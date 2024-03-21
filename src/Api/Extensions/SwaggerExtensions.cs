@@ -10,22 +10,12 @@ public static class SwaggerExtensions
 {
     public static void AddSwaggerDoc(this WebApplicationBuilder builder)
     {
-        if (builder.Environment.IsProduction())
-        {
-            return;
-        }
-        
         builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
         builder.Services.AddSwaggerGen();
     }
 
     public static void UseSwaggerDoc(this WebApplication app)
     {
-        if (app.Environment.IsProduction())
-        {
-            return;
-        }
-        
         app.UseSwagger();
         app.UseSwaggerUI(options =>
         {
